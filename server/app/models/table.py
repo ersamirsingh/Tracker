@@ -1,8 +1,8 @@
 from sqlalchemy import Text, ForeignKey, String
 from sqlalchemy.orm import relationship, Mapped, mapped_column
-from sqlalchemy.dialects.postgresql import ENUM
 from ..db.postgres import Base
 from .enum import TaskStatus
+from enum import Enum
 
 
 class Task(Base):
@@ -20,7 +20,7 @@ class Task(Base):
    )
 
    status: Mapped[TaskStatus] = mapped_column(
-      ENUM(TaskStatus, name="task_status_enum"),
+      Enum(TaskStatus, name="task_status_enum"),
       nullable=False,
       default=TaskStatus.PENDING
    )

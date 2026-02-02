@@ -1,13 +1,13 @@
 from pydantic_settings import BaseSettings
-from pydantic import Field
 
 class Settings(BaseSettings):
-   db_url: str = Field(..., env="DATABASE_URL")
-   # secret_key: str = Field(..., env="SECRET_KEY")
-   # debug: bool = Field(False, env="DEBUG")
+   db_url: str
+   debug: bool
 
    class Config:
-      env_file = ".env"
+      env_file = '.env'
+      env_file_encoding = "utf-8"
       extra = "ignore"
+
 
 settings = Settings()
